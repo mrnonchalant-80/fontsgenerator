@@ -4,782 +4,541 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fancy Font Studio</title>
+<title>DULLAMABANDO AI - Creative Studio</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
 :root {
-    --primary: #7c3aed;
-    --secondary: #ec4899;
-    --dark: #17152d;
-    --muted: #77758c;
-    --glass: rgba(255,255,255,.85);
+--bg:#090b12;
+--panel:#111522;
+--line:#252d40;
+--muted:#929bb0;
+--text:#f4f6fb;
+--purple:#9474ff;
+--cyan:#62d9d0;
 }
-
-* {
-    box-sizing: border-box;
-}
-
+* {box-sizing:border-box}
 body {
-    margin: 0;
-    font-family: Inter, Arial, sans-serif;
-    background:
-        radial-gradient(circle at 10% 10%, #fce7f3, transparent 30%),
-        radial-gradient(circle at 90% 10%, #ddd6fe, transparent 35%),
-        linear-gradient(135deg, #f8f7ff, #eef2ff);
-    color: var(--dark);
-    min-height: 100vh;
+margin:0;
+background:radial-gradient(ellipse at 75% -10%,#29204b,transparent 35%),var(--bg);
+color:var(--text);
+font:15px/1.5 Arial,sans-serif;
 }
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 30px 18px 60px;
+button,input,textarea,select {font:inherit}
+button {cursor:pointer}
+.shell {max-width:1440px;margin:auto;padding:22px}
+.top {
+display:flex;justify-content:space-between;
+align-items:center;gap:15px;margin-bottom:30px
 }
-
-/* HEADER */
-
-.header {
-    text-align: center;
-    padding: 40px 10px 30px;
-}
-
+.brand {display:flex;align-items:center;gap:12px;font-weight:800}
 .logo {
-    display: inline-block;
-    background: linear-gradient(135deg, #7c3aed, #ec4899);
-    color: white;
-    padding: 10px 18px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    box-shadow: 0 8px 20px #a855f733;
+width:42px;height:42px;border-radius:13px;
+background:linear-gradient(135deg,var(--purple),var(--cyan));
+display:grid;place-items:center;color:#090b12;font-size:22px
 }
-
-.header h1 {
-    font-size: clamp(32px, 6vw, 60px);
-    font-weight: 800;
-    margin: 20px 0 12px;
-    letter-spacing: -2px;
+.brand small {display:block;color:var(--muted);font-size:11px}
+.pill {
+border:1px solid var(--line);border-radius:30px;
+padding:8px 13px;background:var(--panel);font-size:12px
 }
-
-.gradient-text {
-    background: linear-gradient(90deg, #7c3aed, #ec4899, #f59e0b);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+.upgrade {
+border:0;border-radius:30px;padding:11px 18px;
+font-weight:bold;background:linear-gradient(100deg,#b6a2ff,#71e6db);
+color:#111
 }
-
-.header p {
-    color: var(--muted);
-    max-width: 600px;
-    margin: auto;
-    line-height: 1.7;
+.hero {margin:25px 0}
+.eyebrow {color:var(--cyan);font-size:11px;letter-spacing:3px}
+.hero h1 {font-size:clamp(30px,5vw,45px);margin:8px 0}
+.hero p,.muted {color:var(--muted)}
+.layout {
+display:grid;
+grid-template-columns:1.35fr .75fr;
+gap:20px
 }
-
-/* INPUT PANEL */
-
-.input-panel {
-    background: var(--glass);
-    border: 1px solid #ffffff;
-    border-radius: 25px;
-    padding: 30px;
-    box-shadow: 0 20px 50px #7c3aed12;
-    backdrop-filter: blur(15px);
+.panel {
+background:linear-gradient(160deg,#151b2a,#101420);
+border:1px solid var(--line);
+border-radius:20px;
+padding:20px;
+margin-bottom:15px
 }
-
-.input-panel label {
-    font-size: 15px;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 12px;
+.panel h2 {font-size:16px;margin-top:0}
+.tabs {
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:7px;margin-bottom:20px
 }
-
-textarea {
-    width: 100%;
-    min-height: 140px;
-    resize: vertical;
-    padding: 20px;
-    border: 2px solid #e9e5ff;
-    border-radius: 16px;
-    background: #faf9ff;
-    outline: none;
-    font-size: 17px;
-    font-family: inherit;
-    transition: .3s;
-    color: var(--dark);
+.tab {
+background:#0d111c;border:1px solid var(--line);
+color:#aab3c9;border-radius:11px;
+padding:12px 5px;font-size:12px
 }
-
-textarea:focus {
-    border-color: #8b5cf6;
-    box-shadow: 0 0 0 5px #8b5cf620;
-    background: white;
+.tab.active {background:#292342;border-color:var(--purple);color:white}
+.field {margin:16px 0}
+.field label {display:block;font-size:12px;margin-bottom:8px}
+.hint {color:var(--muted);font-size:11px}
+.textarea {
+width:100%;min-height:130px;
+background:#0b0f19;border:1px solid #30384c;
+border-radius:13px;color:white;padding:14px;
+resize:vertical
 }
-
-.button-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 18px;
+.row {display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.control {
+width:100%;background:#0b0f19;color:white;
+border:1px solid #30384c;border-radius:11px;padding:11px
 }
-
-.btn {
-    padding: 14px 22px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 700;
-    transition: transform .2s, box-shadow .2s, background .2s;
-    font-family: inherit;
+.drop {
+border:1px dashed #48516c;background:#0d1220;
+border-radius:14px;padding:18px;text-align:center;color:#aeb8ce
 }
-
-.btn:hover {
-    transform: translateY(-3px);
+.drop strong {display:block;color:white}
+.drop input {max-width:100%;margin-top:10px}
+.preview {display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.preview img,.preview video {
+width:100px;height:80px;object-fit:cover;
+border-radius:9px
 }
-
-.btn:active {
-    transform: scale(.95);
+.checkline {display:flex;align-items:center;gap:9px}
+.generate {
+width:100%;border:0;border-radius:13px;
+padding:15px;font-weight:850;color:#111;
+background:linear-gradient(100deg,#b6a2ff,#71e6db);
+margin-top:8px
 }
-
-.generate-btn {
-    color: white;
-    background: linear-gradient(135deg, #7c3aed, #ec4899);
-    box-shadow: 0 8px 20px #a855f744;
+.side {display:flex;flex-direction:column;gap:5px}
+.credit {display:flex;justify-content:space-between}
+.big {font-size:32px;font-weight:bold}
+.bar {height:7px;background:#252b3d;border-radius:10px;margin:12px 0;overflow:hidden}
+.bar span {display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan))}
+.feature {display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.ico {
+width:34px;height:34px;border-radius:10px;
+background:#292342;display:grid;place-items:center
 }
-
-.generate-btn:hover {
-    box-shadow: 0 12px 28px #a855f766;
+.feature b {display:block;font-size:13px}
+.feature small {color:var(--muted)}
+.output {
+min-height:210px;border:1px dashed #38415a;
+border-radius:14px;background:#0b0f19;
+display:grid;place-items:center;text-align:center;padding:20px
 }
-
-.clear-btn {
-    color: #7c3aed;
-    background: #ede9fe;
+.notice {font-size:11px;color:#9ca6bc;line-height:1.5}
+.modal {
+position:fixed;inset:0;background:#05060bdc;
+display:none;place-items:center;padding:20px;z-index:5
 }
-
-.clear-btn:hover {
-    background: #ddd6fe;
+.modal.show {display:grid}
+.modalbox {
+max-width:440px;width:100%;background:#171c2b;
+border:1px solid #45405f;border-radius:20px;padding:25px
 }
+.plans {display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.plan {border:1px solid var(--line);border-radius:13px;padding:13px;background:#101522}
+.plan strong {display:block;font-size:22px}
+.close {background:none;border:0;color:white;float:right;font-size:22px}
+footer {text-align:center;color:#707b91;font-size:11px;margin-top:25px}
 
-.note {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 14px;
+@media(max-width:850px) {
+.layout {grid-template-columns:1fr}
+.tabs {grid-template-columns:repeat(2,1fr)}
 }
-
-/* RESULTS */
-
-.section-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin: 35px 5px 20px;
-}
-
-.section-heading h2 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.count-badge {
-    padding: 8px 14px;
-    border-radius: 50px;
-    background: #ede9fe;
-    color: #7c3aed;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.search-box {
-    width: 100%;
-    max-width: 320px;
-    padding: 12px 15px;
-    border: 1px solid #e4defe;
-    border-radius: 12px;
-    outline: none;
-    background: white;
-    font-size: 14px;
-}
-
-.search-box:focus {
-    border-color: #8b5cf6;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
-}
-
-.card {
-    background: rgba(255,255,255,.92);
-    border: 1px solid #ffffff;
-    border-radius: 18px;
-    padding: 18px;
-    box-shadow: 0 5px 18px #312e8110;
-    transition: transform .25s, box-shadow .25s, border .25s;
-    animation: appear .45s ease both;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px #7c3aed18;
-    border-color: #ddd6fe;
-}
-
-.card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-}
-
-.style-name {
-    color: #77758c;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: .7px;
-}
-
-.result {
-    font-size: 19px;
-    line-height: 1.7;
-    min-height: 45px;
-    overflow-wrap: anywhere;
-    color: #24213c;
-    margin-bottom: 12px;
-}
-
-.copy-btn {
-    background: #f3e8ff;
-    color: #7c3aed;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 9px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 12px;
-    transition: .2s;
-}
-
-.copy-btn:hover {
-    background: #7c3aed;
-    color: white;
-    transform: scale(1.05);
-}
-
-.copy-btn.copied {
-    background: #dcfce7;
-    color: #15803d;
-}
-
-.empty {
-    color: #aaa;
-    text-align: center;
-    padding: 30px;
-    grid-column: 1/-1;
-}
-
-.footer {
-    text-align: center;
-    color: #77758c;
-    font-size: 13px;
-    margin-top: 45px;
-}
-
-/* ANIMATIONS */
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes confettiFall {
-    0% {
-        transform: translate3d(0,0,0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translate3d(var(--dx),var(--dy),0)
-                   rotate(var(--rot));
-        opacity: 0;
-    }
-}
-
-@media(max-width:600px) {
-    .container {
-        padding: 15px 12px 40px;
-    }
-
-    .header {
-        padding: 25px 5px;
-    }
-
-    .header h1 {
-        letter-spacing: -1px;
-    }
-
-    .input-panel {
-        padding: 20px;
-    }
-
-    .section-heading {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .search-box {
-        max-width: 100%;
-    }
+@media(max-width:440px) {
+.row {grid-template-columns:1fr}
+.shell {padding:14px}
+.hero h1 {font-size:30px}
 }
 </style>
 </head>
 
 <body>
+<main class="shell">
 
-<div class="container">
-
-<header class="header">
-
-    <div class="logo">✨ FONT STUDIO</div>
-
-    <h1>
-        Make Your Text
-        <span class="gradient-text">Fancy!</span>
-    </h1>
-
-    <p>
-        Transform ordinary text into 100 creative font styles.
-        Copy, share and make your text stand out everywhere.
-    </p>
-
-</header>
-
-<section class="input-panel">
-
-    <label for="userText">✍️ Type your text here</label>
-
-    <textarea id="userText"
-        placeholder="Type your name, bio, caption or anything...">Hello World</textarea>
-
-    <div class="button-row">
-
-        <button class="btn generate-btn" id="generateBtn">
-            ✨ Generate Styles
-        </button>
-
-        <button class="btn clear-btn" id="clearBtn">
-            🗑️ Clear Text
-        </button>
-
-    </div>
-
-    <div class="note">
-        🎉 Click Generate to create your styles and celebrate with confetti!
-    </div>
-
-</section>
-
-<div class="section-heading">
-
-    <h2>🎨 Your Font Collection</h2>
-
-    <div class="count-badge" id="countBadge">
-        100 Styles
-    </div>
-
-    <input class="search-box" id="searchBox"
-        placeholder="🔎 Search font styles...">
-
+<header class="top">
+<div class="brand">
+<div class="logo">✦</div>
+<div>
+DULLAMABANDO AI
+<small>AI VIDEO & IMAGE STUDIO</small>
+</div>
 </div>
 
-<div class="grid" id="fontResults"></div>
+<div>
+<span class="pill" id="planPill">FREE · 2 VIDEO CREDITS</span>
+<button class="upgrade" onclick="openUpgrade()">Upgrade ↗</button>
+</div>
+</header>
 
-<footer class="footer">
-    Made with 💜 for creative text lovers
+<section class="hero">
+<div class="eyebrow">YOUR IDEAS, IN MOTION</div>
+<h1>Create videos and images with AI.</h1>
+<p>Turn your prompts, photos and motion references into cinematic creations. Create in English or Swahili.</p>
+</section>
+
+<div class="layout">
+
+<section class="panel">
+<h2>What would you like to create?</h2>
+
+<div class="tabs">
+<button class="tab active" data-mode="text-video">✦ Text to video</button>
+<button class="tab" data-mode="image-video">▧ Image to video</button>
+<button class="tab" data-mode="text-image">▣ Text to picture</button>
+<button class="tab" data-mode="motion">↝ Motion control</button>
+</div>
+
+<div class="field">
+<label>Describe your idea</label>
+<textarea class="textarea" id="prompt"
+placeholder="A cinematic shot of a Maasai warrior walking across the Serengeti at golden hour, dust in the air, slow camera movement..."></textarea>
+</div>
+
+<div class="field">
+<label id="uploadLabel">Reference image or video</label>
+<div class="drop">
+<strong>＋ Upload photos or videos</strong>
+<span class="muted">Select from your phone gallery or computer storage</span>
+<br>
+<input id="uploads" type="file" accept="image/*,video/*" multiple>
+</div>
+<div class="preview" id="preview"></div>
+</div>
+
+<div class="row">
+<div class="field">
+<label>Visual style</label>
+<select class="control" id="style">
+<option>Cinematic realism</option>
+<option>Anime</option>
+<option>3D animation</option>
+<option>Documentary</option>
+<option>Watercolor</option>
+<option>Commercial</option>
+</select>
+</div>
+
+<div class="field">
+<label>Aspect ratio</label>
+<select class="control" id="ratio">
+<option>16:9 Landscape</option>
+<option>9:16 Portrait</option>
+<option>1:1 Square</option>
+<option>4:5 Social</option>
+</select>
+</div>
+</div>
+
+<div class="row" id="videoOptions">
+<div class="field">
+<label>Video duration</label>
+<select class="control" id="duration">
+<option>5 seconds</option>
+<option>8 seconds</option>
+<option>10 seconds</option>
+</select>
+</div>
+
+<div class="field">
+<label>Quality</label>
+<select class="control">
+<option>Standard</option>
+<option>High</option>
+<option>Ultra</option>
+</select>
+</div>
+</div>
+
+<div class="field">
+<label>Audio and voice generation</label>
+<label class="checkline">
+<input type="checkbox" id="swahili">
+Generate Swahili vocals or narration
+</label>
+<p class="hint">Example: Use a warm, energetic Kiswahili narrator with a Tanzanian accent.</p>
+</div>
+
+<button class="generate" id="generate">✦ Generate creation</button>
+
+<p class="notice">
+IMPORTANT: This is a front-end prototype. Connect an AI generation backend to produce real videos, images and audio.
+</p>
+</section>
+
+<aside class="side">
+
+<section class="panel">
+<div class="credit">
+<div>
+<div class="muted">Your free video credits</div>
+<div class="big"><span id="remaining">2</span> <span class="muted">/ 2 left</span></div>
+</div>
+<div class="ico">✦</div>
+</div>
+
+<div class="bar"><span id="progress" style="width:0%"></span></div>
+<div class="muted" id="creditText">You have 2 free video generations.</div>
+
+<button class="upgrade" style="width:100%;margin-top:15px" onclick="openUpgrade()">
+Get more credits
+</button>
+</section>
+
+<section class="panel">
+<h2>Creation tools</h2>
+
+<div class="feature"><div class="ico">✦</div><div><b>Text to video</b><small>Generate videos using prompts</small></div></div>
+<div class="feature"><div class="ico">▧</div><div><b>Image to video</b><small>Animate still photos</small></div></div>
+<div class="feature"><div class="ico">▣</div><div><b>Text to picture</b><small>Create images from words</small></div></div>
+<div class="feature"><div class="ico">↝</div><div><b>Motion control</b><small>Copy movement from references</small></div></div>
+<div class="feature"><div class="ico">♫</div><div><b>Kiswahili audio</b><small>Voice and vocal instructions</small></div></div>
+</section>
+
+<section class="panel">
+<h2>Preview / output</h2>
+<div class="output" id="output">
+<div>
+<div style="font-size:30px">✧</div>
+<b>Your creation will appear here</b>
+<p class="muted">Enter a prompt to begin.</p>
+</div>
+</div>
+</section>
+
+</aside>
+</div>
+
+<footer>
+DULLAMABANDO AI · AI VIDEO & IMAGE CREATION PLATFORM
 </footer>
+</main>
 
+<!-- PREMIUM WINDOW -->
+
+<div class="modal" id="upgradeModal">
+<div class="modalbox">
+
+<button class="close" onclick="closeUpgrade()">×</button>
+
+<div class="eyebrow">UNLOCK YOUR CREATIVITY</div>
+<h2>Upgrade to Premium</h2>
+<p class="muted">Choose your subscription and payment currency.</p>
+
+<div class="row" style="margin-top:16px">
+<div class="field">
+<label>Subscription period</label>
+<select class="control" id="billingPeriod" onchange="updatePlanPrices()">
+<option value="weekly">Weekly</option>
+<option value="monthly" selected>Monthly</option>
+<option value="yearly">Yearly</option>
+</select>
+</div>
+
+<div class="field">
+<label>Payment currency</label>
+<select class="control" id="billingCurrency" onchange="updatePlanPrices()">
+<option value="USD">US Dollar (USD)</option>
+<option value="TZS">Tanzanian Shilling (TZS)</option>
+<option value="EUR">Euro (EUR)</option>
+</select>
+</div>
+</div>
+
+<div class="plans">
+<div class="plan">
+<div class="muted">Starter</div>
+<strong id="starterPrice">$9</strong>
+<small id="starterCredits">30 video credits</small>
+</div>
+
+<div class="plan">
+<div class="muted">Pro</div>
+<strong id="proPrice">$19</strong>
+<small id="proCredits">100 video credits</small>
+</div>
+</div>
+
+<button class="generate" onclick="paymentNotice()">
+Continue to premium
+</button>
+
+<p class="notice">Payment processing must be connected before accepting subscriptions.</p>
+</div>
 </div>
 
 <script>
+let mode = "text-video";
+let used = 0;
 
-// ====================================
-// FONT CONVERSION FUNCTIONS
-// ====================================
+const tabs = document.querySelectorAll(".tab");
+const uploads = document.getElementById("uploads");
 
-function alphabet(upper, lower) {
-    return text => [...text].map(char => {
-        let n = char.codePointAt(0);
+tabs.forEach(tab => {
+tab.addEventListener("click", () => {
+tabs.forEach(t => t.classList.remove("active"));
+tab.classList.add("active");
 
-        if (n >= 65 && n <= 90)
-            return String.fromCodePoint(upper + n - 65);
+mode = tab.dataset.mode;
 
-        if (n >= 97 && n <= 122)
-            return String.fromCodePoint(lower + n - 97);
+document.getElementById("uploadLabel").textContent =
+mode === "image-video" ? "Starting image or video" :
+mode === "motion" ? "Subject image or motion reference video" :
+mode === "text-image" ? "Optional reference image" :
+"Optional reference image or video";
 
-        return char;
-    }).join("");
-}
+document.getElementById("videoOptions").style.display =
+mode === "text-image" ? "none" : "grid";
 
-const bold = alphabet(0x1D400,0x1D41A);
-const italic = alphabet(0x1D434,0x1D44E);
-const boldItalic = alphabet(0x1D468,0x1D482);
-const sans = alphabet(0x1D5A0,0x1D5BA);
-const sansBold = alphabet(0x1D5D4,0x1D5EE);
-const sansItalic = alphabet(0x1D608,0x1D622);
-const sansBoldItalic = alphabet(0x1D63C,0x1D656);
-const mono = alphabet(0x1D670,0x1D68A);
-const doubleStruck = alphabet(0x1D538,0x1D552);
-const fraktur = alphabet(0x1D504,0x1D51E);
-
-const smallCaps = s => s.toLowerCase().replace(/[a-z]/g,c =>
-    "ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"[c.charCodeAt(0)-97] || c
-);
-
-const circled = s => s.replace(/[A-Za-z]/g,c =>
-    String.fromCodePoint(0x24B6+c.toUpperCase().charCodeAt(0)-65)
-);
-
-const fullwidth = s => s.replace(/[!-~]/g,c =>
-    String.fromCharCode(c.charCodeAt(0)+0xFEE0)
-);
-
-const upside = s => [...s].reverse().map(c => ({
-    a:"ɐ",b:"q",c:"ɔ",d:"p",e:"ǝ",f:"ɟ",
-    g:"ƃ",h:"ɥ",i:"ᴉ",j:"ɾ",k:"ʞ",l:"ן",
-    m:"ɯ",n:"u",o:"o",p:"d",q:"b",r:"ɹ",
-    s:"s",t:"ʇ",u:"n",v:"ʌ",w:"ʍ",x:"x",
-    y:"ʎ",z:"z","!":"¡","?":"¿"
-}[c.toLowerCase()]||c)).join("");
-
-// ====================================
-// FONT STYLE COLLECTION
-// ====================================
-
-let styles = [
-["Bold",bold],
-["Italic",italic],
-["Bold Italic",boldItalic],
-["Sans Serif",sans],
-["Sans Bold",sansBold],
-["Sans Italic",sansItalic],
-["Sans Bold Italic",sansBoldItalic],
-["Monospace",mono],
-["Double Struck",doubleStruck],
-["Fraktur",fraktur],
-["Small Caps",smallCaps],
-["Circled",circled],
-["Fullwidth",fullwidth],
-["Upside Down",upside]
-];
-
-// Decorative frames
-
-const decorations = [
-["Hearts","♥","♥"],
-["Stars","★","★"],
-["Sparkles","✧","✧"],
-["Flowers","❀","❀"],
-["Diamonds","◇","◇"],
-["Music Notes","♫","♫"],
-["Clouds","☁","☁"],
-["Crowns","♛","♛"],
-["Arrows","➳","➳"],
-["Brackets","【","】"],
-["Parentheses","（","）"],
-["Square Brackets","［","］"],
-["Curly Braces","｛","｝"],
-["Stars Frame","✦","✦"],
-["Glitter","⋆","⋆"],
-["Cute Face","૮","ა"],
-["Wave Frame","〜","〜"],
-["Sunshine","☀","☀"],
-["Leaf Frame","❧","❧"],
-["Flower Frame","✿","✿"],
-["Love Frame","ღ","ღ"],
-["Royal","♕","♕"],
-["Crosses","†","†"],
-["Circle Frame","◉","◉"],
-["Triangle Frame","△","△"],
-["Dashes","—","—"],
-["Dots","•","•"],
-["Tildes","~","~"],
-["Exclamation","¡","!"],
-["Question","¿","?"],
-["Lightning","ϟ","ϟ"],
-["Fire","♨","♨"],
-["Butterflies","ʚ","ɞ"],
-["Angel","୨","୧"],
-["Aesthetic","༺","༻"],
-["Ornate","꧁","꧂"],
-["Vintage","༄","༄"],
-["Decorative","۞","۞"],
-["Wings","ʚ","ɞ"],
-["Ribbons","୨୧","୨୧"],
-["Corner Stars","⋆｡","｡⋆"],
-["Double Hearts","♡♡","♡♡"],
-["Triple Stars","★★★","★★★"],
-["Moon","☾","☽"],
-["Planet","⪩","⪨"],
-["Gem","♢","♢"],
-["Sparkle Hearts","♡✧","✧♡"],
-["Checkered","▧","▧"],
-["Shiny","✩","✩"],
-["Peace","☮","☮"],
-["Music Frame","♪","♪"],
-["Note Frame","♫","♫"],
-["Snowflakes","❄","❄"],
-["Rainbows","虹","虹"],
-["Cherry","ღ","ღ"],
-["Japanese Style","「","」"],
-["Double Angle","《","》"],
-["Angle","〈","〉"],
-["Decorative Dots","ꔛ","ꔛ"],
-["Swirls","༒","༒"],
-["Scallop","꒰","꒱"],
-["Soft Frame","〔","〕"],
-["Bold Frame","〖","〗"],
-["White Stars","☆","☆"],
-["Black Hearts","♥","♥"],
-["Tiny Stars","﹡","﹡"],
-["Flower Petals","❁","❁"],
-["Tulips","⚘","⚘"],
-["Hearts and Stars","♥✦","✦♥"],
-["Moon and Stars","☾⋆","⋆☽"],
-["Crown and Stars","♛✧","✧♛"],
-["Diamond Stars","◇✦","✦◇"],
-["Fancy Quotes","❝","❞"],
-["Wreath","❃","❃"],
-["Final Flourish","༺ღ","ღ༻"]
-];
-
-decorations.forEach(([name,left,right]) => {
-    styles.push([
-        name,
-        text => left + text + right
-    ]);
+document.getElementById("generate").textContent =
+mode === "text-image" ? "✦ Generate picture" : "✦ Generate creation";
+});
 });
 
-// Extra text effects
+// Display uploaded files locally
 
-styles.push(
-["Strike Through",s=>[...s].map(c=>c+"\u0336").join("")],
-["Underline",s=>[...s].map(c=>c+"\u0332").join("")],
-["Double Underline",s=>[...s].map(c=>c+"\u0333").join("")],
-["Overline",s=>[...s].map(c=>c+"\u0305").join("")],
-["Dotted",s=>[...s].map(c=>c+"\u0307").join("")],
-["Spaced",s=>[...s].join(" ")],
-["Wide Spaced",s=>[...s].join("　")],
-["Wavy Underline",s=>[...s].map(c=>c+"\u0342").join("")],
-["Tiny Style",smallCaps],
-["Decorated Caps",s=>s.toUpperCase().split("").join(" ")]
+uploads.addEventListener("change", () => {
+const preview = document.getElementById("preview");
+preview.innerHTML = "";
+
+[...uploads.files].forEach(file => {
+const url = URL.createObjectURL(file);
+
+let element = document.createElement(
+file.type.startsWith("video/") ? "video" : "img"
 );
 
-// Guarantee a total of 100 styles
+element.src = url;
 
-styles = styles.slice(0,100);
-
-// ====================================
-// CONFETTI EFFECT
-// ====================================
-
-function confetti(amount=180) {
-
-    const colors = [
-        "#7c3aed","#ec4899","#f59e0b",
-        "#22c55e","#06b6d4","#ef4444",
-        "#6366f1","#f472b6","#a855f7"
-    ];
-
-    for(let i=0;i<amount;i++) {
-
-        const particle = document.createElement("div");
-
-        particle.style.position = "fixed";
-        particle.style.left = Math.random()*100+"vw";
-        particle.style.top = "-20px";
-        particle.style.width = (5+Math.random()*9)+"px";
-        particle.style.height = (5+Math.random()*9)+"px";
-        particle.style.background =
-            colors[Math.floor(Math.random()*colors.length)];
-
-        particle.style.borderRadius =
-            Math.random() > .5 ? "50%" : "2px";
-
-        particle.style.zIndex = "99999";
-        particle.style.pointerEvents = "none";
-
-        particle.style.setProperty("--dx",
-            (Math.random()*500-250)+"px");
-
-        particle.style.setProperty("--dy",
-            (500+Math.random()*700)+"px");
-
-        particle.style.setProperty("--rot",
-            (Math.random()*1000-500)+"deg");
-
-        particle.style.animation =
-            `confettiFall ${1.5+Math.random()*2.5}s ease-out forwards`;
-
-        document.body.appendChild(particle);
-
-        setTimeout(()=>particle.remove(),4500);
-    }
+if (element.tagName === "VIDEO") {
+element.controls = true;
 }
 
-// ====================================
-// GENERATE FONT CARDS
-// ====================================
+preview.appendChild(element);
+});
+});
 
-const input = document.getElementById("userText");
-const results = document.getElementById("fontResults");
-const search = document.getElementById("searchBox");
+// DEMO SUBSCRIPTION PRICES
+// Replace these example prices before launch.
 
-function generateFonts() {
+const planPrices = {
+USD: {
+weekly:[3,7],
+monthly:[9,19],
+yearly:[90,190],
+symbol:"$"
+},
+TZS: {
+weekly:[8000,18000],
+monthly:[25000,50000],
+yearly:[250000,500000],
+symbol:"TSh "
+},
+EUR: {
+weekly:[3,7],
+monthly:[9,19],
+yearly:[90,190],
+symbol:"€"
+}
+};
 
-    const text = input.value;
-    results.innerHTML = "";
+function updatePlanPrices() {
+const currency = document.getElementById("billingCurrency").value;
+const period = document.getElementById("billingPeriod").value;
 
-    // Celebration on generation
-    confetti(220);
+const prices = planPrices[currency][period];
+const symbol = planPrices[currency].symbol;
 
-    styles.forEach(([name,converter],index) => {
+document.getElementById("starterPrice").textContent =
+symbol + prices[0];
 
-        const styledText = text
-            ? converter(text)
-            : "Your styled text appears here";
+document.getElementById("proPrice").textContent =
+symbol + prices[1];
 
-        const card = document.createElement("div");
-        card.className = "card";
+document.getElementById("starterCredits").textContent =
+"30 video credits · " + period;
 
-        card.style.animationDelay =
-            Math.min(index*0.015,0.5)+"s";
-
-        const top = document.createElement("div");
-        top.className = "card-top";
-
-        const title = document.createElement("div");
-        title.className = "style-name";
-        title.textContent = (index+1)+" · "+name;
-
-        const copyButton = document.createElement("button");
-        copyButton.className = "copy-btn";
-        copyButton.textContent = "📋 Copy";
-
-        copyButton.onclick = async function() {
-
-            if(!text) {
-                input.focus();
-                return;
-            }
-
-            try {
-
-                await navigator.clipboard.writeText(styledText);
-
-                copyButton.textContent = "✓ Copied!";
-                copyButton.classList.add("copied");
-
-                // Small celebration when copying
-                confetti(45);
-
-                setTimeout(()=>{
-                    copyButton.textContent = "📋 Copy";
-                    copyButton.classList.remove("copied");
-                },1800);
-
-            } catch(error) {
-
-                // Fallback for clipboard access
-                const temp = document.createElement("textarea");
-                temp.value = styledText;
-                document.body.appendChild(temp);
-                temp.select();
-
-                try {
-                    document.execCommand("copy");
-                    copyButton.textContent = "✓ Copied!";
-                } catch(e) {
-                    copyButton.textContent = "Copy failed";
-                }
-
-                temp.remove();
-
-                setTimeout(()=>{
-                    copyButton.textContent = "📋 Copy";
-                },1800);
-            }
-        };
-
-        const output = document.createElement("div");
-        output.className = "result";
-        output.textContent = styledText;
-
-        top.appendChild(title);
-        top.appendChild(copyButton);
-
-        card.appendChild(top);
-        card.appendChild(output);
-
-        results.appendChild(card);
-
-    });
-
-    document.getElementById("countBadge").textContent =
-        styles.length+" Styles";
+document.getElementById("proCredits").textContent =
+"100 video credits · " + period;
 }
 
-// ====================================
-// SEARCH STYLES
-// ====================================
+function openUpgrade() {
+document.getElementById("upgradeModal").classList.add("show");
+}
 
-search.addEventListener("input",function() {
+function closeUpgrade() {
+document.getElementById("upgradeModal").classList.remove("show");
+}
 
-    const query = this.value.toLowerCase();
+function updateCredits() {
+let left = Math.max(0,2-used);
 
-    document.querySelectorAll(".card").forEach(card => {
+document.getElementById("remaining").textContent = left;
 
-        const name = card.querySelector(".style-name")
-            .textContent.toLowerCase();
+document.getElementById("progress").style.width =
+(used/2*100) + "%";
 
-        card.style.display =
-            name.includes(query) ? "" : "none";
-    });
+document.getElementById("creditText").textContent =
+left > 0
+? "You have " + left + " free video generations remaining."
+: "Free video credits exhausted. Upgrade to continue.";
+
+document.getElementById("planPill").textContent =
+left > 0
+? "FREE · " + left + " VIDEO CREDITS"
+: "FREE · LIMIT REACHED";
+}
+
+function paymentNotice() {
+alert(
+"Payment is not connected yet. Integrate Flutterwave or Stripe to activate subscriptions in USD, TZS and EUR."
+);
+}
+
+// GENERATION DEMO
+
+document.getElementById("generate").addEventListener("click", () => {
+
+const prompt = document.getElementById("prompt").value.trim();
+
+if (!prompt) {
+alert("Please enter your creation prompt.");
+return;
+}
+
+if (mode === "image-video" && !uploads.files.length) {
+alert("Please upload an image or video first.");
+return;
+}
+
+if (mode !== "text-image" && used >= 2) {
+openUpgrade();
+return;
+}
+
+if (mode !== "text-image") {
+used++;
+updateCredits();
+}
+
+const output = document.getElementById("output");
+
+const safePrompt = prompt.replace(/[<>]/g,"");
+
+output.innerHTML = `
+<div>
+<div style="font-size:30px">✦</div>
+<b>Demo request prepared</b>
+<p class="muted">${mode}</p>
+<p class="muted">${safePrompt}</p>
+<p class="notice">
+Connect an AI generation backend to render your actual media.
+</p>
+</div>
+`;
 
 });
 
-// ====================================
-// BUTTONS
-// ====================================
-
-document.getElementById("generateBtn")
-    .addEventListener("click",generateFonts);
-
-document.getElementById("clearBtn")
-    .addEventListener("click",function() {
-
-        input.value = "";
-        search.value = "";
-
-        generateFonts();
-
-        input.focus();
-    });
-
-// Initial render
-
-generateFonts();
+updateCredits();
+updatePlanPrices();
 
 </script>
 </body>
