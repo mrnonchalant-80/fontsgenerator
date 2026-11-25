@@ -3,433 +3,418 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>100 Font Style Generator</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Font Fiesta — 100 Style Generator</title>
 <style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    padding: 30px 15px;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #f4f6fb, #e9e7ff);
-    color: #182033;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-header h1 {
-    font-size: 35px;
-    margin-bottom: 10px;
-    color: #5145c8;
-}
-
-header p {
-    color: #68738a;
-}
-
-.input-box {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px #00000010;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-textarea {
-    width: 100%;
-    min-height: 120px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 16px;
-    resize: vertical;
-}
-
-button {
-    border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.generate {
-    background: #6558e8;
-    color: white;
-    margin-top: 12px;
-}
-
-.clear {
-    background: #eeeaff;
-    color: #5145c8;
-    margin-top: 12px;
-}
-
-h2 {
-    margin-top: 30px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(240px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.style-card {
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid #e5e8f0;
-    overflow-wrap: anywhere;
-}
-
-.style-name {
-    font-size: 12px;
-    font-weight: bold;
-    color: #777;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-.result {
-    font-size: 18px;
-    margin: 10px 0;
-    line-height: 1.6;
-}
-
-.copy {
-    background: #eeeaff;
-    color: #5145c8;
-    padding: 7px 12px;
-    font-size: 12px;
-}
-
-.card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-}
-
-@media(max-width: 500px) {
-    header h1 {
-        font-size: 26px;
-    }
-
-    body {
-        padding: 15px 10px;
-    }
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root{--bg:#0b1020;--panel:#121a30;--ink:#f7f7ff;--muted:#9aa7c4;--pink:#ff4fa3;--purple:#9270ff;--cyan:#48d9f5}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#34235d 0,transparent 38%),radial-gradient(ellipse at 90% 12%,#123e58 0,transparent 30%),var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;padding:28px 16px 60px}
+.container{max-width:1200px;margin:auto}
+.hero{text-align:center;padding:30px 12px 25px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #52447d;background:#211b43;color:#d5c9ff;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,6vw,66px);letter-spacing:-.04em;line-height:1.05;margin:18px 0 12px}
+.gradient-text{background:linear-gradient(90deg,#ff65b4,#a68aff,#53e2f6);background-clip:text;color:transparent}
+.hero p{max-width:650px;margin:auto;color:var(--muted);line-height:1.65}
+.panel{background:linear-gradient(145deg,#141c34dd,#0f172bdc);border:1px solid #30405f;border-radius:24px;padding:24px;box-shadow:0 24px 70px #03061166;backdrop-filter:blur(14px)}
+.panel label{display:block;font-weight:700;margin-bottom:12px;font-size:15px}
+textarea{width:100%;min-height:125px;background:#0b1225;color:var(--ink);border:1px solid #344363;border-radius:16px;padding:16px;font:16px/1.6 'DM Sans',sans-serif;resize:vertical;outline:none;transition:.2s}
+textarea:focus{border-color:#a68aff;box-shadow:0 0 0 4px #9270ff20}
+.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:14px}
+.btn{padding:12px 18px;border-radius:12px;border:1px solid transparent;font:700 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .18s,filter .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn:active{transform:scale(.97)}
+.primary{color:white;background:linear-gradient(100deg,#ff4fa3,#9270ff 55%,#48d9f5);box-shadow:0 8px 25px #9270ff40}
+.secondary{color:#d9e2ff;background:#202b47;border-color:#344363}
+.hint{font-size:12px;color:var(--muted);margin-top:12px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin:32px 2px 16px}
+.toolbar h2{font-family:'Space Grotesk',sans-serif;margin:0;font-size:22px}
+.count{font-size:13px;color:#c4cce0;background:#202b47;border:1px solid #344363;padding:7px 11px;border-radius:999px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;width:100%;margin:4px 0 16px}
+.filters input{flex:1;min-width:220px;background:#111a30;border:1px solid #344363;color:white;border-radius:12px;padding:12px;outline:none}
+.filters select{background:#111a30;color:white;border:1px solid #344363;border-radius:12px;padding:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.style-card{background:linear-gradient(145deg,#17213a,#111a2e);border:1px solid #2c3b59;border-radius:16px;padding:16px;min-width:0;transition:transform .2s,border-color .2s,box-shadow .2s}
+.style-card:hover{transform:translateY(-3px);border-color:#826aff;box-shadow:0 12px 28px #0003}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.style-name{font-size:11px;color:#aebbd7;font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+.copy{border:1px solid #54468a;background:#282047;color:#e7dcff;border-radius:9px;padding:7px 11px;font-size:12px;font-weight:700;cursor:pointer;transition:.2s}
+.copy:hover{background:#443473;transform:scale(1.04)}
+.copy.copied{background:#123f3a;color:#83f3d0;border-color:#267d6b}
+.result{font-size:19px;line-height:1.65;overflow-wrap:anywhere;min-height:32px;color:#f6f5ff}
+.empty{color:#8290ae;font-style:italic}
+.no-results{text-align:center;color:var(--muted);padding:35px;border:1px dashed #344363;border-radius:16px;grid-column:1/-1}
+#confettiLayer{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:9999}
+.confetti{position:absolute;top:-20px;width:10px;height:14px;opacity:1;animation:fall var(--duration) linear forwards;transform:rotate(var(--rotate));border-radius:2px}
+@keyframes fall{0%{transform:translate3d(0,-10vh,0) rotate(0);opacity:1}100%{transform:translate3d(var(--drift),110vh,0) rotate(var(--spin));opacity:.1}}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;background:#172541;border:1px solid #51668e;color:white;padding:12px 18px;border-radius:999px;z-index:10000;transition:.25s;pointer-events:none;box-shadow:0 10px 30px #0005}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{text-align:center;color:#7f8baa;font-size:12px;margin:30px 0 0}
+@media(max-width:550px){body{padding:15px 10px}.hero{padding:25px 4px}.panel{padding:17px}.toolbar{align-items:flex-start}.grid{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
+
+<div id="confettiLayer"></div>
+<div class="toast" id="toast">Copied!</div>
 
 <div class="container">
 
-<header>
-    <h1>100 Font Style Generator</h1>
-    <p>Generate beautiful and creative text styles instantly!</p>
+<header class="hero">
+<div class="pill">✦ 100 styles · free · instant</div>
+<h1>Your text, <span class="gradient-text">your vibe.</span></h1>
+<p>Turn ordinary text into something fun. Explore 100 decorative styles and copy your favourite in one click.</p>
 </header>
 
-<div class="input-box">
+<section class="panel">
+<label for="userText">✍️ Type your text below</label>
+<textarea id="userText" placeholder="Your name, caption, bio, or message...">Hello World</textarea>
 
-    <label for="userText">Enter Your Text</label>
-
-    <textarea id="userText"
-    placeholder="Type your name or text here...">Hello World</textarea>
-
-    <button class="generate" onclick="generateFonts()">
-        ✨ Generate 100 Styles
-    </button>
-
-    <button class="clear" onclick="clearText()">
-        Clear Text
-    </button>
-
+<div class="actions">
+<button class="btn primary" id="generate">✨ Generate styles</button>
+<button class="btn secondary" id="clear">↺ Clear</button>
+<button class="btn secondary" id="copyAll">⧉ Copy all styles</button>
 </div>
 
-<h2>Generated Font Styles (100)</h2>
+<div class="hint">Some styles are Unicode characters. Their appearance can vary between apps and devices.</div>
+</section>
 
-<div class="grid" id="fontResults"></div>
+<div class="toolbar">
+<h2>Explore styles</h2>
+<span class="count" id="count">100 styles</span>
+</div>
 
+<div class="filters">
+<input id="search" placeholder="⌕ Search styles (e.g. bold, hearts, stars)">
+<select id="sort">
+<option value="default">All styles</option>
+<option value="decorative">Decorative frames</option>
+<option value="font">Font transformations</option>
+</select>
+</div>
+
+<section class="grid" id="fontResults"></section>
+
+<footer>Made for creative text ✦ Font Fiesta</footer>
 </div>
 
 <script>
 
-// Convert normal alphabet into Unicode font alphabets
+// Alphabet transformations
 
-function alphabet(upper, lower) {
-    return text => [...text].map(char => {
-        let n = char.codePointAt(0);
+const alphabet=(upper,lower)=>s=>[...s].map(c=>{
+let n=c.codePointAt(0);
+if(n>=65&&n<=90)return String.fromCodePoint(upper+n-65);
+if(n>=97&&n<=122)return String.fromCodePoint(lower+n-97);
+return c;
+}).join("");
 
-        if (n >= 65 && n <= 90)
-            return String.fromCodePoint(upper + n - 65);
+const bold=alphabet(0x1D400,0x1D41A);
+const italic=alphabet(0x1D434,0x1D44E);
+const boldItalic=alphabet(0x1D468,0x1D482);
+const sans=alphabet(0x1D5A0,0x1D5BA);
+const sansBold=alphabet(0x1D5D4,0x1D5EE);
+const sansItalic=alphabet(0x1D608,0x1D622);
+const sansBoldItalic=alphabet(0x1D63C,0x1D656);
+const mono=alphabet(0x1D670,0x1D68A);
+const doubleStruck=alphabet(0x1D538,0x1D552);
+const fraktur=alphabet(0x1D504,0x1D51E);
 
-        if (n >= 97 && n <= 122)
-            return String.fromCodePoint(lower + n - 97);
+const small=s=>s.toLowerCase().replace(/[a-z]/g,c=>'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ'[c.charCodeAt(0)-97]||c);
 
-        return char;
-    }).join("");
-}
+const circled=s=>s.replace(/[A-Za-z]/g,c=>String.fromCodePoint(0x24B6+c.toUpperCase().charCodeAt(0)-65));
 
-const bold = alphabet(0x1D400, 0x1D41A);
-const italic = alphabet(0x1D434, 0x1D44E);
-const boldItalic = alphabet(0x1D468, 0x1D482);
-const sans = alphabet(0x1D5A0, 0x1D5BA);
-const sansBold = alphabet(0x1D5D4, 0x1D5EE);
-const sansItalic = alphabet(0x1D608, 0x1D622);
-const sansBoldItalic = alphabet(0x1D63C, 0x1D656);
-const monospace = alphabet(0x1D670, 0x1D68A);
-const doubleStruck = alphabet(0x1D538, 0x1D552);
-const fraktur = alphabet(0x1D504, 0x1D51E);
+const full=s=>s.replace(/[!-~]/g,c=>String.fromCharCode(c.charCodeAt(0)+0xFEE0));
 
-const smallCaps = text =>
-    text.toLowerCase().replace(/[a-z]/g, c =>
-    "ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"
-    [c.charCodeAt(0)-97] || c);
+const upside=s=>[...s].reverse().map(c=>({
+'a':'ɐ','b':'q','c':'ɔ','d':'p','e':'ǝ','f':'ɟ',
+'g':'ƃ','h':'ɥ','i':'ᴉ','j':'ɾ','k':'ʞ','l':'ן',
+'m':'ɯ','n':'u','o':'o','p':'d','q':'b','r':'ɹ',
+'s':'s','t':'ʇ','u':'n','v':'ʌ','w':'ʍ','x':'x',
+'y':'ʎ','z':'z','!':'¡','?':'¿'
+}[c.toLowerCase()]||c)).join('');
 
-const circled = text =>
-    text.replace(/[A-Za-z]/g, c =>
-    String.fromCodePoint(
-        0x24B6 + c.toUpperCase().charCodeAt(0)-65
-    ));
+// Base styles
 
-const fullwidth = text =>
-    text.replace(/[!-~]/g, c =>
-    String.fromCharCode(c.charCodeAt(0)+0xFEE0));
-
-const upsideDown = text =>
-    [...text].reverse().map(c => ({
-        a:"ɐ", b:"q", c:"ɔ", d:"p", e:"ǝ",
-        f:"ɟ", g:"ƃ", h:"ɥ", i:"ᴉ", j:"ɾ",
-        k:"ʞ", l:"ן", m:"ɯ", n:"u", o:"o",
-        p:"d", q:"b", r:"ɹ", s:"s", t:"ʇ",
-        u:"n", v:"ʌ", w:"ʍ", x:"x", y:"ʎ",
-        z:"z", "!":"¡", "?":"¿"
-    }[c.toLowerCase()] || c)).join("");
+let styles=[
+['Bold',bold,'font'],
+['Italic',italic,'font'],
+['Bold Italic',boldItalic,'font'],
+['Sans Serif',sans,'font'],
+['Sans Bold',sansBold,'font'],
+['Sans Italic',sansItalic,'font'],
+['Sans Bold Italic',sansBoldItalic,'font'],
+['Monospace',mono,'font'],
+['Double Struck',doubleStruck,'font'],
+['Fraktur',fraktur,'font'],
+['Small Caps',small,'font'],
+['Circled',circled,'font'],
+['Fullwidth',full,'font'],
+['Upside Down',upside,'font']
+];
 
 // Decorative styles
 
-const decorations = [
-["Hearts","♥","♥"],
-["Stars","★","★"],
-["Sparkles","✧","✧"],
-["Flowers","❀","❀"],
-["Diamonds","◇","◇"],
-["Music Notes","♫","♫"],
-["Clouds","☁","☁"],
-["Crowns","♛","♛"],
-["Arrows","➳","➳"],
-["Brackets","【","】"],
-["Parentheses","（","）"],
-["Square Brackets","［","］"],
-["Curly Braces","｛","｝"],
-["Stars Frame","✦","✦"],
-["Glitter","⋆","⋆"],
-["Cute Face","૮","ა"],
-["Wave Frame","〜","〜"],
-["Sunshine","☀","☀"],
-["Leaf Frame","❧","❧"],
-["Flower Frame","✿","✿"],
-["Love Frame","ღ","ღ"],
-["Royal","♕","♕"],
-["Crosses","†","†"],
-["Circle Frame","◉","◉"],
-["Triangle Frame","△","△"],
-["Dashes","—","—"],
-["Dots","•","•"],
-["Tildes","~","~"],
-["Exclamation","¡","!"],
-["Question","¿","?"],
-["Lightning","ϟ","ϟ"],
-["Fire","♨","♨"],
-["Butterflies","ʚ","ɞ"],
-["Angel","୨","୧"],
-["Aesthetic","༺","༻"],
-["Ornate","꧁","꧂"],
-["Vintage","༄","༄"],
-["Decorative","۞","۞"],
-["Wings","ʚ","ɞ"],
-["Ribbons","୨୧","୨୧"],
-["Corner Stars","⋆｡","｡⋆"],
-["Double Hearts","♡♡","♡♡"],
-["Triple Stars","★★★","★★★"],
-["Moon","☾","☽"],
-["Planet","⪩","⪨"],
-["Gem","♢","♢"],
-["Sparkle Hearts","♡✧","✧♡"],
-["Checkered","▧","▧"],
-["Shiny","✩","✩"],
-["Peace","☮","☮"],
-["Music Frame","♪","♪"],
-["Note Frame","♫","♫"],
-["Snowflakes","❄","❄"],
-["Rainbows","虹","虹"],
-["Cherry","ღ","ღ"],
-["Japanese Style","「","」"],
-["Double Angle","《","》"],
-["Angle","〈","〉"],
-["Decorative Dots","ꔛ","ꔛ"],
-["Swirls","༒","༒"],
-["Scallop","꒰","꒱"],
-["Soft Frame","〔","〕"],
-["Bold Frame","〖","〗"],
-["White Stars","☆","☆"],
-["Black Hearts","♥","♥"],
-["Tiny Stars","﹡","﹡"],
-["Flower Petals","❁","❁"],
-["Tulips","⚘","⚘"],
-["Hearts and Stars","♥✦","✦♥"],
-["Moon and Stars","☾⋆","⋆☽"],
-["Crown and Stars","♛✧","✧♛"],
-["Diamond Stars","◇✦","✦◇"],
-["Fancy Quotes","❝","❞"],
-["Wreath","❃","❃"],
-["Final Flourish","༺ღ","ღ༻"]
+const wraps=[
+['Hearts','♥','♥'],['Stars','★','★'],['Sparkles','✧','✧'],
+['Flowers','❀','❀'],['Diamonds','◇','◇'],['Music Notes','♫','♫'],
+['Clouds','☁','☁'],['Crowns','♛','♛'],['Arrows','➳','➳'],
+['Brackets','【','】'],['Parentheses','（','）'],
+['Square Brackets','［','］'],['Curly Braces','｛','｝'],
+['Stars Frame','✦','✦'],['Glitter','⋆','⋆'],['Cute Face','૮','ა'],
+['Wave Frame','〜','〜'],['Sunshine','☀','☀'],
+['Leaf Frame','❧','❧'],['Flower Frame','✿','✿'],
+['Love Frame','ღ','ღ'],['Royal','♕','♕'],['Crosses','†','†'],
+['Circle Frame','◉','◉'],['Triangle Frame','△','△'],
+['Dashes','—','—'],['Dots','•','•'],['Tildes','~','~'],
+['Lightning','ϟ','ϟ'],['Fire','♨','♨'],['Butterflies','ʚ','ɞ'],
+['Angel','୨','୧'],['Aesthetic','༺','༻'],['Ornate','꧁','꧂'],
+['Vintage','༄','༄'],['Decorative','۞','۞'],['Wings','ʚ','ɞ'],
+['Ribbons','୨୧','୨୧'],['Corner Stars','⋆｡','｡⋆'],
+['Double Hearts','♡♡','♡♡'],['Triple Stars','★★★','★★★'],
+['Moon','☾','☽'],['Planet','⪩','⪨'],['Gem','♢','♢'],
+['Sparkle Hearts','♡✧','✧♡'],['Checkered','▧','▧'],
+['Shiny','✩','✩'],['Peace','☮','☮'],['Music Frame','♪','♪'],
+['Note Frame','♫','♫'],['Snowflakes','❄','❄'],['Rainbows','虹','虹'],
+['Cherry','ღ','ღ'],['Japanese Style','「','」'],
+['Double Angle','《','》'],['Angle','〈','〉'],
+['Decorative Dots','ꔛ','ꔛ'],['Swirls','༒','༒'],
+['Scallop','꒰','꒱'],['Soft Frame','〔','〕'],
+['Bold Frame','〖','〗'],['White Stars','☆','☆'],
+['Flower Petals','❁','❁'],['Tulips','⚘','⚘'],
+['Hearts and Stars','♥✦','✦♥'],['Moon and Stars','☾⋆','⋆☽'],
+['Crown and Stars','♛✧','✧♛'],['Diamond Stars','◇✦','✦◇'],
+['Fancy Quotes','❝','❞'],['Wreath','❃','❃'],
+['Final Flourish','༺ღ','ღ༻'],['Sparkle Border','✧･ﾟ','ﾟ･✧'],
+['Soft Hearts','♡','♡'],['Flower Stars','✿','✧'],
+['Star Dust','･ﾟ','ﾟ･'],['Cute Bow','୨','୧'],
+['Fancy Frame','༶','༶'],['Ornament','۩','۩'],
+['Medallion','۞','۞'],['Wavy Frame','≋','≋'],
+['Arrow Frame','➵','➵'],['Double Arrow','»','«'],
+['Chevron','›','‹'],['Bar Frame','║','║'],
+['Line Frame','╰','╯'],['Box Frame','┊','┊'],
+['Asterisk','※','※'],['Scattered Stars','⋆｡°','°｡⋆'],
+['Butterfly Frame','Ƹ̵̡Ӝ̵̨̄Ʒ','Ƹ̵̡Ӝ̵̨̄Ʒ'],
+['Mini Hearts','ෆ','ෆ'],['Rose','❦','❦'],
+['Floral','❋','❋'],['Starry','✮','✮'],
+['Sparkling','✨','✨'],['Fancy','༘','༘'],
+['Heart Wings','ʚ♡','♡ɞ'],['Mystic','☽','☾'],
+['Twinkle','⭒','⭒'],['Decorative Wave','≈','≈'],
+['Flourish','༺','༻'],['Glowing Stars','✰','✰'],
+['Elegant','❣','❣'],['Star Frame','✵','✵']
 ];
 
-// First 14 font transformations
-
-let styles = [
-["Bold",bold],
-["Italic",italic],
-["Bold Italic",boldItalic],
-["Sans Serif",sans],
-["Sans Bold",sansBold],
-["Sans Italic",sansItalic],
-["Sans Bold Italic",sansBoldItalic],
-["Monospace",monospace],
-["Double Struck",doubleStruck],
-["Fraktur",fraktur],
-["Small Caps",smallCaps],
-["Circled",circled],
-["Fullwidth",fullwidth],
-["Upside Down",upsideDown]
-];
-
-// Add decorative transformations
-
-decorations.forEach(([name,left,right]) => {
-    styles.push([
-        name,
-        text => left + text + right
-    ]);
+wraps.forEach(([name,left,right])=>{
+styles.push([name,s=>left+s+right,'decorative']);
 });
 
-// Additional text effects
+// Extra text effects
 
 styles.push(
-["Strike Through",s=>[...s].map(c=>c+"\u0336").join("")],
-["Underline",s=>[...s].map(c=>c+"\u0332").join("")],
-["Double Underline",s=>[...s].map(c=>c+"\u0333").join("")],
-["Overline",s=>[...s].map(c=>c+"\u0305").join("")],
-["Dotted",s=>[...s].map(c=>c+"\u0307").join("")],
-["Spaced",s=>[...s].join(" ")],
-["Wide Spaced",s=>[...s].join("　")],
-["Wavy Underline",s=>[...s].map(c=>c+"\u0342").join("")],
-["Tiny Superscript",smallCaps],
-["Decorated Caps",s=>s.toUpperCase().split("").join(" ")]
+['Strike Through',s=>[...s].map(c=>c+'\u0336').join(''),'font'],
+['Underline',s=>[...s].map(c=>c+'\u0332').join(''),'font'],
+['Double Underline',s=>[...s].map(c=>c+'\u0333').join(''),'font'],
+['Overline',s=>[...s].map(c=>c+'\u0305').join(''),'font'],
+['Dotted',s=>[...s].map(c=>c+'\u0307').join(''),'font'],
+['Spaced',s=>[...s].join(' '),'font'],
+['Wide Spaced',s=>[...s].join('　'),'font'],
+['Wavy Underline',s=>[...s].map(c=>c+'\u0342').join(''),'font'],
+['Decorated Caps',s=>s.toUpperCase().split('').join(' '),'font'],
+['Alternating Caps',s=>[...s].map((c,i)=>i%2?c.toLowerCase():c.toUpperCase()).join(''),'font']
 );
 
-// Keep exactly 100 styles
+styles=styles.slice(0,100);
 
-styles = styles.slice(0,100);
+// Confetti animation
 
-// Generate all font styles
+function confetti(amount=100){
 
-function generateFonts() {
+const layer=document.getElementById('confettiLayer');
 
-    let text = document.getElementById("userText").value;
+const colors=['#ff4fa3','#9270ff','#48d9f5','#ffd166','#70f0bd','#fff'];
 
-    let results = document.getElementById("fontResults");
+for(let i=0;i<amount;i++){
 
-    results.innerHTML = "";
+let p=document.createElement('i');
+p.className='confetti';
 
-    styles.forEach(([name, converter], index) => {
+p.style.left=Math.random()*100+'vw';
+p.style.background=colors[Math.floor(Math.random()*colors.length)];
 
-        let styledText = text
-            ? converter(text)
-            : "Your styled text appears here";
+p.style.setProperty('--duration',(2.3+Math.random()*2.7)+'s');
+p.style.setProperty('--drift',((Math.random()-.5)*300)+'px');
+p.style.setProperty('--rotate',Math.random()*360+'deg');
+p.style.setProperty('--spin',(Math.random()*1200-600)+'deg');
 
-        let card = document.createElement("div");
-        card.className = "style-card";
+p.style.width=(5+Math.random()*9)+'px';
+p.style.height=(7+Math.random()*14)+'px';
 
-        let top = document.createElement("div");
-        top.className = "card-top";
+layer.appendChild(p);
 
-        let title = document.createElement("div");
-        title.className = "style-name";
-        title.textContent = (index + 1) + ". " + name;
+setTimeout(()=>p.remove(),5200);
 
-        let copyButton = document.createElement("button");
-        copyButton.className = "copy";
-        copyButton.textContent = "Copy";
+}
+}
 
-        copyButton.onclick = async function() {
+// Toast notification
 
-            if (!text) return;
+let toastTimer;
 
-            try {
-                await navigator.clipboard.writeText(styledText);
-                copyButton.textContent = "Copied!";
+function toast(message){
 
-                setTimeout(() => {
-                    copyButton.textContent = "Copy";
-                }, 1200);
+let t=document.getElementById('toast');
 
-            } catch(error) {
-                copyButton.textContent = "Copy unavailable";
-            }
-        };
+t.textContent=message;
+t.classList.add('show');
 
-        let output = document.createElement("div");
-        output.className = "result";
-        output.textContent = styledText;
+clearTimeout(toastTimer);
 
-        top.appendChild(title);
-        top.appendChild(copyButton);
-
-        card.appendChild(top);
-        card.appendChild(output);
-
-        results.appendChild(card);
-
-    });
+toastTimer=setTimeout(()=>t.classList.remove('show'),1900);
 
 }
 
-// Clear text
+// Generate font results
 
-function clearText() {
-    document.getElementById("userText").value = "";
-    generateFonts();
+function render(){
+
+let val=document.getElementById('userText').value;
+let results=document.getElementById('fontResults');
+let search=document.getElementById('search');
+let sort=document.getElementById('sort');
+
+results.replaceChildren();
+
+let term=search.value.trim().toLowerCase();
+let mode=sort.value;
+
+let filtered=styles.filter(([name,fn,category])=>
+(!term||name.toLowerCase().includes(term))&&
+(mode==='default'||category===mode)
+);
+
+document.getElementById('count').textContent=filtered.length+' styles';
+
+if(!filtered.length){
+
+let empty=document.createElement('div');
+empty.className='no-results';
+empty.textContent='No styles found. Try another search.';
+results.append(empty);
+return;
+
 }
 
-// Display styles when page opens
+filtered.forEach(([name,fn],i)=>{
 
-generateFonts();
+let card=document.createElement('article');
+card.className='style-card';
+
+let top=document.createElement('div');
+top.className='card-top';
+
+let title=document.createElement('span');
+title.className='style-name';
+title.textContent=name;
+
+let btn=document.createElement('button');
+btn.className='copy';
+btn.textContent='⧉ Copy';
+
+let out=document.createElement('div');
+out.className='result'+(!val?' empty':'');
+
+let styled=val?fn(val):'Your styled text appears here';
+out.textContent=styled;
+
+btn.onclick=async()=>{
+
+if(!val){
+document.getElementById('userText').focus();
+toast('Type something first!');
+return;
+}
+
+try{
+
+await navigator.clipboard.writeText(styled);
+
+btn.textContent='✓ Copied!';
+btn.classList.add('copied');
+
+confetti(45);
+toast('Copied to clipboard! ✨');
+
+setTimeout(()=>{
+btn.textContent='⧉ Copy';
+btn.classList.remove('copied');
+},1500);
+
+}catch(e){
+
+toast('Clipboard unavailable. Try using HTTPS or localhost.');
+
+}
+
+};
+
+top.append(title,btn);
+card.append(top,out);
+results.append(card);
+
+});
+
+}
+
+// Button actions
+
+document.getElementById('generate').onclick=()=>{
+render();
+confetti(150);
+toast('100 styles generated! ✨');
+};
+
+document.getElementById('clear').onclick=()=>{
+document.getElementById('userText').value='';
+render();
+document.getElementById('userText').focus();
+toast('Text cleared');
+};
+
+document.getElementById('copyAll').onclick=async()=>{
+
+let text=document.getElementById('userText').value;
+
+if(!text.trim()){
+toast('Type something first!');
+return;
+}
+
+let lines=styles.map(([name,fn],i)=>
+(i+1)+'. '+name+': '+fn(text)
+);
+
+try{
+
+await navigator.clipboard.writeText(lines.join('\n'));
+
+confetti(120);
+toast('All 100 styles copied!');
+
+}catch(e){
+
+toast('Clipboard unavailable. Try HTTPS or localhost.');
+
+}
+
+};
+
+document.getElementById('search').oninput=render;
+document.getElementById('sort').onchange=render;
+
+// Initial render
+
+render();
 
 </script>
-
 </body>
 </html>
