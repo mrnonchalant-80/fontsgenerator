@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Font Style Generator</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 15px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f4f6fb, #e9e7ff);
+    color: #182033;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 35px;
+    margin-bottom: 10px;
+    color: #5145c8;
+}
+
+header p {
+    color: #68738a;
+}
+
+.input-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #00000010;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+button {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.generate {
+    background: #6558e8;
+    color: white;
+    margin-top: 12px;
+}
+
+.clear {
+    background: #eeeaff;
+    color: #5145c8;
+    margin-top: 12px;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.style-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #e5e8f0;
+    overflow-wrap: anywhere;
+}
+
+.style-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.result {
+    font-size: 18px;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.copy {
+    background: #eeeaff;
+    color: #5145c8;
+    padding: 7px 12px;
+    font-size: 12px;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+@media(max-width: 500px) {
+    header h1 {
+        font-size: 26px;
+    }
+
+    body {
+        padding: 15px 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>100 Font Style Generator</h1>
+    <p>Generate beautiful and creative text styles instantly!</p>
+</header>
+
+<div class="input-box">
+
+    <label for="userText">Enter Your Text</label>
+
+    <textarea id="userText"
+    placeholder="Type your name or text here...">Hello World</textarea>
+
+    <button class="generate" onclick="generateFonts()">
+        ✨ Generate 100 Styles
+    </button>
+
+    <button class="clear" onclick="clearText()">
+        Clear Text
+    </button>
+
+</div>
+
+<h2>Generated Font Styles (100)</h2>
+
+<div class="grid" id="fontResults"></div>
+
+</div>
+
+<script>
+
+// Convert normal alphabet into Unicode font alphabets
+
+function alphabet(upper, lower) {
+    return text => [...text].map(char => {
+        let n = char.codePointAt(0);
+
+        if (n >= 65 && n <= 90)
+            return String.fromCodePoint(upper + n - 65);
+
+        if (n >= 97 && n <= 122)
+            return String.fromCodePoint(lower + n - 97);
+
+        return char;
+    }).join("");
+}
+
+const bold = alphabet(0x1D400, 0x1D41A);
+const italic = alphabet(0x1D434, 0x1D44E);
+const boldItalic = alphabet(0x1D468, 0x1D482);
+const sans = alphabet(0x1D5A0, 0x1D5BA);
+const sansBold = alphabet(0x1D5D4, 0x1D5EE);
+const sansItalic = alphabet(0x1D608, 0x1D622);
+const sansBoldItalic = alphabet(0x1D63C, 0x1D656);
+const monospace = alphabet(0x1D670, 0x1D68A);
+const doubleStruck = alphabet(0x1D538, 0x1D552);
+const fraktur = alphabet(0x1D504, 0x1D51E);
+
+const smallCaps = text =>
+    text.toLowerCase().replace(/[a-z]/g, c =>
+    "ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"
+    [c.charCodeAt(0)-97] || c);
+
+const circled = text =>
+    text.replace(/[A-Za-z]/g, c =>
+    String.fromCodePoint(
+        0x24B6 + c.toUpperCase().charCodeAt(0)-65
+    ));
+
+const fullwidth = text =>
+    text.replace(/[!-~]/g, c =>
+    String.fromCharCode(c.charCodeAt(0)+0xFEE0));
+
+const upsideDown = text =>
+    [...text].reverse().map(c => ({
+        a:"ɐ", b:"q", c:"ɔ", d:"p", e:"ǝ",
+        f:"ɟ", g:"ƃ", h:"ɥ", i:"ᴉ", j:"ɾ",
+        k:"ʞ", l:"ן", m:"ɯ", n:"u", o:"o",
+        p:"d", q:"b", r:"ɹ", s:"s", t:"ʇ",
+        u:"n", v:"ʌ", w:"ʍ", x:"x", y:"ʎ",
+        z:"z", "!":"¡", "?":"¿"
+    }[c.toLowerCase()] || c)).join("");
+
+// Decorative styles
+
+const decorations = [
+["Hearts","♥","♥"],
+["Stars","★","★"],
+["Sparkles","✧","✧"],
+["Flowers","❀","❀"],
+["Diamonds","◇","◇"],
+["Music Notes","♫","♫"],
+["Clouds","☁","☁"],
+["Crowns","♛","♛"],
+["Arrows","➳","➳"],
+["Brackets","【","】"],
+["Parentheses","（","）"],
+["Square Brackets","［","］"],
+["Curly Braces","｛","｝"],
+["Stars Frame","✦","✦"],
+["Glitter","⋆","⋆"],
+["Cute Face","૮","ა"],
+["Wave Frame","〜","〜"],
+["Sunshine","☀","☀"],
+["Leaf Frame","❧","❧"],
+["Flower Frame","✿","✿"],
+["Love Frame","ღ","ღ"],
+["Royal","♕","♕"],
+["Crosses","†","†"],
+["Circle Frame","◉","◉"],
+["Triangle Frame","△","△"],
+["Dashes","—","—"],
+["Dots","•","•"],
+["Tildes","~","~"],
+["Exclamation","¡","!"],
+["Question","¿","?"],
+["Lightning","ϟ","ϟ"],
+["Fire","♨","♨"],
+["Butterflies","ʚ","ɞ"],
+["Angel","୨","୧"],
+["Aesthetic","༺","༻"],
+["Ornate","꧁","꧂"],
+["Vintage","༄","༄"],
+["Decorative","۞","۞"],
+["Wings","ʚ","ɞ"],
+["Ribbons","୨୧","୨୧"],
+["Corner Stars","⋆｡","｡⋆"],
+["Double Hearts","♡♡","♡♡"],
+["Triple Stars","★★★","★★★"],
+["Moon","☾","☽"],
+["Planet","⪩","⪨"],
+["Gem","♢","♢"],
+["Sparkle Hearts","♡✧","✧♡"],
+["Checkered","▧","▧"],
+["Shiny","✩","✩"],
+["Peace","☮","☮"],
+["Music Frame","♪","♪"],
+["Note Frame","♫","♫"],
+["Snowflakes","❄","❄"],
+["Rainbows","虹","虹"],
+["Cherry","ღ","ღ"],
+["Japanese Style","「","」"],
+["Double Angle","《","》"],
+["Angle","〈","〉"],
+["Decorative Dots","ꔛ","ꔛ"],
+["Swirls","༒","༒"],
+["Scallop","꒰","꒱"],
+["Soft Frame","〔","〕"],
+["Bold Frame","〖","〗"],
+["White Stars","☆","☆"],
+["Black Hearts","♥","♥"],
+["Tiny Stars","﹡","﹡"],
+["Flower Petals","❁","❁"],
+["Tulips","⚘","⚘"],
+["Hearts and Stars","♥✦","✦♥"],
+["Moon and Stars","☾⋆","⋆☽"],
+["Crown and Stars","♛✧","✧♛"],
+["Diamond Stars","◇✦","✦◇"],
+["Fancy Quotes","❝","❞"],
+["Wreath","❃","❃"],
+["Final Flourish","༺ღ","ღ༻"]
+];
+
+// First 14 font transformations
+
+let styles = [
+["Bold",bold],
+["Italic",italic],
+["Bold Italic",boldItalic],
+["Sans Serif",sans],
+["Sans Bold",sansBold],
+["Sans Italic",sansItalic],
+["Sans Bold Italic",sansBoldItalic],
+["Monospace",monospace],
+["Double Struck",doubleStruck],
+["Fraktur",fraktur],
+["Small Caps",smallCaps],
+["Circled",circled],
+["Fullwidth",fullwidth],
+["Upside Down",upsideDown]
+];
+
+// Add decorative transformations
+
+decorations.forEach(([name,left,right]) => {
+    styles.push([
+        name,
+        text => left + text + right
+    ]);
+});
+
+// Additional text effects
+
+styles.push(
+["Strike Through",s=>[...s].map(c=>c+"\u0336").join("")],
+["Underline",s=>[...s].map(c=>c+"\u0332").join("")],
+["Double Underline",s=>[...s].map(c=>c+"\u0333").join("")],
+["Overline",s=>[...s].map(c=>c+"\u0305").join("")],
+["Dotted",s=>[...s].map(c=>c+"\u0307").join("")],
+["Spaced",s=>[...s].join(" ")],
+["Wide Spaced",s=>[...s].join("　")],
+["Wavy Underline",s=>[...s].map(c=>c+"\u0342").join("")],
+["Tiny Superscript",smallCaps],
+["Decorated Caps",s=>s.toUpperCase().split("").join(" ")]
+);
+
+// Keep exactly 100 styles
+
+styles = styles.slice(0,100);
+
+// Generate all font styles
+
+function generateFonts() {
+
+    let text = document.getElementById("userText").value;
+
+    let results = document.getElementById("fontResults");
+
+    results.innerHTML = "";
+
+    styles.forEach(([name, converter], index) => {
+
+        let styledText = text
+            ? converter(text)
+            : "Your styled text appears here";
+
+        let card = document.createElement("div");
+        card.className = "style-card";
+
+        let top = document.createElement("div");
+        top.className = "card-top";
+
+        let title = document.createElement("div");
+        title.className = "style-name";
+        title.textContent = (index + 1) + ". " + name;
+
+        let copyButton = document.createElement("button");
+        copyButton.className = "copy";
+        copyButton.textContent = "Copy";
+
+        copyButton.onclick = async function() {
+
+            if (!text) return;
+
+            try {
+                await navigator.clipboard.writeText(styledText);
+                copyButton.textContent = "Copied!";
+
+                setTimeout(() => {
+                    copyButton.textContent = "Copy";
+                }, 1200);
+
+            } catch(error) {
+                copyButton.textContent = "Copy unavailable";
+            }
+        };
+
+        let output = document.createElement("div");
+        output.className = "result";
+        output.textContent = styledText;
+
+        top.appendChild(title);
+        top.appendChild(copyButton);
+
+        card.appendChild(top);
+        card.appendChild(output);
+
+        results.appendChild(card);
+
+    });
+
+}
+
+// Clear text
+
+function clearText() {
+    document.getElementById("userText").value = "";
+    generateFonts();
+}
+
+// Display styles when page opens
+
+generateFonts();
+
+</script>
+
+</body>
+</html>
